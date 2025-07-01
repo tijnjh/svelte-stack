@@ -1,5 +1,6 @@
-import { ElementType, ComponentProps, ReactNode } from 'react';
-import { Gap } from './Gap.tsx';
+import type { ComponentProps, ElementType } from 'react';
+import type { Snippet } from 'svelte';
+import type { Gap } from './gap.ts';
 
 export type AlignContent =
   /** Items packed to the start of the container */
@@ -44,7 +45,7 @@ export type StackPropsInternal = {
   between?: boolean;
   /** Centers items along the main axis (`justify-content: center`). */
   center?: boolean;
-  children?: ReactNode;
+  children?: Snippet;
   /** Sets spacing column gap elements (`column-gap: <Gap>`). Accepts 0–48px in steps of 4, or `true` to apply a default of 8px. */
   columnGap?: Gap;
   /** Defines how multiple rows align along the cross axis (`align-content: ...`). */
@@ -88,7 +89,7 @@ export type AcceptsStyle<C extends ElementType> =
 
 export type AsProp<Component extends ElementType> = {
   /** The element to render, defaults to `<div />` on the web, and `<View />` on React Native. */
-  as?: Component;
+  as?: string;
 };
 
 export type PropsToOmit<

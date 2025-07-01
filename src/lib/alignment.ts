@@ -1,4 +1,4 @@
-import { AlignContent, AlignSelf } from './Types.js';
+import type { AlignContent, AlignSelf } from './types.ts';
 
 export function resolveAlignment<
   T extends AlignContent | AlignSelf,

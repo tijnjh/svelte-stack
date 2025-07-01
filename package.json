@@ -1,71 +1,55 @@
 {
-  "name": "@nkzw/stack",
-  "version": "2.1.0",
-  "description": "Zero-dependency, type-safe Stack component for streamlining flexbox usage in React & React Native.",
-  "homepage": "https://github.com/nkzw-tech/stack",
+  "name": "svelte-stack",
+  "description": "Zero-dependency, type-safe Stack component for streamlining flexbox usage in Svelte.",
+  "homepage": "https://github.com/tijnjh/svelte-stack",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nkzw-tech/stack"
+    "url": "https://github.com/tijnjh/svelte-stack"
   },
-  "license": "MIT",
-  "author": {
-    "name": "Christoph Nakazawa",
-    "email": "christoph.pojer@gmail.com"
+  "author": "tijnjh <tijn@tijn.dev>",
+  "version": "0.0.2",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build && npm run prepack",
+    "preview": "vite preview",
+    "prepare": "svelte-kit sync || echo ''",
+    "prepack": "svelte-kit sync && svelte-package && publint",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
+  "files": [
+    "dist",
+    "!dist/**/*.test.*",
+    "!dist/**/*.spec.*"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "type": "module",
   "exports": {
     ".": {
-      "react-native": "./lib/index.native.js",
-      "default": "./lib/index.js"
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
     }
-  },
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
-  "scripts": {
-    "build": "mkdir -p lib && tsdown --clean --platform=browser src/index.tsx && tsdown --no-clean src/index.native.tsx",
-    "format": "prettier --experimental-cli --write .",
-    "lint": "eslint --cache .",
-    "lint:format": "prettier --experimental-cli --cache --check .",
-    "test": "npm-run-all --parallel tsc:check lint lint:format vitest:run",
-    "tsc:check": "tsc",
-    "vitest:run": "vitest run"
-  },
-  "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.4.2",
-    "@nkzw/eslint-config": "^3.0.1",
-    "@prettier/plugin-oxc": "^0.0.4",
-    "@testing-library/react": "^16.3.0",
-    "@types/node": "^24.0.3",
-    "@types/react": "^19.1.8",
-    "@typescript-eslint/eslint-plugin": "^8.35.0",
-    "@typescript-eslint/parser": "^8.35.0",
-    "@vitejs/plugin-react": "^4.6.0",
-    "eslint": "^9.29.0",
-    "happy-dom": "^18.0.1",
-    "nativewind": "^4.1.23",
-    "npm-run-all2": "^8.0.4",
-    "prettier": "^3.6.0",
-    "prettier-plugin-packagejson": "^2.5.15",
-    "react": "^19.1.0",
-    "react-native": "^0.80.0",
-    "tsdown": "^0.12.8",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
   },
   "peerDependencies": {
-    "nativewind": "^4.1.23",
-    "react": "^19.0.0",
-    "react-native": "^0.78.0"
+    "svelte": "^5.0.0"
   },
-  "peerDependenciesMeta": {
-    "nativewind": {
-      "optional": true
-    },
-    "react-native": {
-      "optional": true
-    }
-  }
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^6.0.1",
+    "@sveltejs/kit": "^2.22.2",
+    "@sveltejs/package": "^2.3.12",
+    "@sveltejs/vite-plugin-svelte": "^5.1.0",
+    "publint": "^0.3.12",
+    "svelte": "^5.34.9",
+    "svelte-check": "^4.2.2",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0"
+  },
+  "keywords": [
+    "svelte"
+  ],
+  "license": "MIT"
 }
